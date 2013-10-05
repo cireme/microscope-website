@@ -1,4 +1,4 @@
 microscope-website
 ==================
 
-http://microscopejs.com/ website.
+http://microscopejs.com/ website (in development).
