@@ -5,7 +5,7 @@
 <div class="row">
 	<div class="col-md-3">
 		<ul class="list-group animated slideInLeft">
-			<li class="list-group-item"><a href="">Getting started</a></li>
+			<li class="list-group-item"><a href="#getting-started">Getting started</a></li>
 			<li class="list-group-item">Project architecture</li>
 			<li class="list-group-item">CLI</li>
 			<li class="list-group-item">Models</li>
@@ -18,15 +18,123 @@
 		</ul>
 	</div>
 	<div class="col-md-9 animated bounceInUp">
-		<h2 class="text-primary">Getting started</h2>
+		<h2 class="text-primary" id="getting-started">Getting started</h2>
 			<h3 class="text-success">installation</h3>
+				<pre>npm install microscope -g</pre>
+
 			<h3 class="text-success">create new app</h3>
+				<p>you can use the CLI to generate new pre-builded project</p>
+				<pre>microscope new projectname</pre>
+				<p>or you can use the microscope inquirer tool with the following selection :</p>
+				<pre>microscope tool</pre>
+				<pre>microscope new project</pre>
+				<p>You now need to install microscope project dependencies</p>
+				<pre>cd projectname</pre>
+				<pre>npm install</pre>
+				<pre>bower install</pre>
+				<p>You are done !</p>
+
 			<h3 class="text-success">synchronize model</h3>
+				<p>basic microscope project come with user model for authentication</p>
+				<p>you need to synchronize you model with your database</p>
+				<p>create new mysql database and edit <strong>./config/database.json</strong> config file</p>
+				<pre>microscope db sync</pre>
+				<p>or with microscope inquirer tool</p>
+				<pre>microscope tool</pre>
+				<pre> > database</pre>
+				<pre> > synchronize</pre>
+				<p>congratulation !</p>
+				<p>you can now run your server</p>
+				<pre>microscope server</pre>
+				<p>or :</p>
+				<pre>microscope tool > run server</pre>
+				<p>Visit : <a href="http://localhost:3000">http://localhost:3000</a></p>
 
 		<h2 class="text-primary">Project architecture</h2>
-			<h3 class="text-success">App</h3>
-			<h3 class="text-success">api</h3>
+			<h3 class="text-success">app</h3>
+				<p>app folder is your application folder. You can find here your controllers, api, data access layer, models and views.</p>
+				Here is the app folder architecture :
+				<pre>
+app/
+|   api/
+|   assets/
+|   controllers/
+|   dal/
+|   models/
+|   views/
+				</pre>
 			<h3 class="text-success">controller</h3>
+				<p>
+					microscope is a MVC design pattern framework. So you can find controller in <strong>./app/controllers/</strong> folder.
+					microscope controllers are prototype class with contructor, routes method and actions.
+					routes() method define the controller routing. So all your routes are define inside controller class.
+					routes catch http request and callback to controller actions.
+					Check this out the basic controller syntax :
+				</p>
+				<pre>
+/**
+* homeController class
+*/
+(function () {
+
+    /**
+    * Constructor.
+    * @param {app} - express app.
+    */
+    function HomeController(app) {
+        this.routes(app);
+    }
+
+    /**
+     * Controller routes
+     * @param  {express} app
+     */
+    HomeController.prototype.routes = function(app) {
+        app.get('/', this.index);
+        app.get('/home', this.index);
+        app.get('/home/index', this.index);
+        app.get('/documentation', this.docs);
+    };
+
+    /**
+     * [HttpGet].
+     * index action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.index = function(req, res) {
+        res.render('home/index');
+    };
+
+    /**
+     * [HttpGet].
+     * docs action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.docs = function(req, res) {
+        res.render('home/docs');
+    };
+
+    module.exports = HomeController;
+})();
+				</pre>
+				<p>Keep in mind microscope.js is based on express.js and controller are just express routes + function in prototype class. If you love express.js, you will love microscope.</p>
+			<h3 class="text-success">api</h3>
+				<p>api folder is the folder for apiControllers. ApiControllers return data as json and use data access layer class. A basic apiController action is define like the following code :</p>
+				<pre>
+/**
+* [httpget]
+* movieApiController index action.
+* @param {req} http request.
+* @param {res} http response.
+*/
+movieApiController.prototype.getAll = function(req, res) {
+    movieDAL.getAll(function (movies) {
+        res.send(movies);
+    });
+};
+					</pre>
 			<h3 class="text-success">models</h3>
 			<h3 class="text-success">views</h3>
 			<h3 class="text-success">dal</h3>

@@ -21,6 +21,8 @@
         app.get('/home/index', this.index);
         app.get('/documentation', this.documentation);
         app.get('/home/documentation', this.documentation);
+        app.get('/tutorial', this.tutorial);
+        app.get('/home/tutorial', this.tutorial);
     };
 
     /**
@@ -41,6 +43,10 @@
      */
     HomeController.prototype.documentation = function(req, res) {
         res.render('home/docs');
+    };
+
+    HomeController.prototype.tutorial = function(req, res) {
+        res.render('home/tutorial');
     };
 
     module.exports = HomeController;
