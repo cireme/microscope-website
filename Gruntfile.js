@@ -4,51 +4,21 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
-		// configuration
-		config:{
-			stylusFiles : {
-				'public/styles/application.css' : 'app/assets/stylus/application.styl'
-			},
-			scriptsFiles : {
-				'public/scripts/test.js': ['app/assets/scripts/test.js']
-			}
-		},
-
-		stylus: {
-			options:{
-				compress : false
-			},
-			dev:{
-				files : '<%= config.stylusFiles %>'
-			},
-			release:{
-				options :{
-					compress : true
-				},
-				files : '<%= config.stylusFiles %>'
-			}
-		},
-
-		uglify: {
-			options:{
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-			},
-			release: {
-				files : '<%= config.scriptsFiles %>'
-			}
-		}
+		config : require('./grunt_tasks/config'),
+		copy : require('./grunt_tasks/copy'),
+		clean : require('./grunt_tasks/clean'),
+		stylus : require('./grunt_tasks/stylus')
 	});
 
 	// load tasks
 	grunt.loadNpmTasks('grunt-contrib-stylus');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 
 	// Default task(s).
 	grunt.registerTask('default', []);
 
-	grunt.registerTask('minify', ['uglify']);
-
-	grunt.registerTask('build', ['stylus:dev']);
-	grunt.registerTask('build:release', ['stylus:release', 'uglify:release']);
-
+	grunt.registerTask('build', ['clean', 'copy:dev', 'stylus:dev']);
+	grunt.registerTask('build:release', []);
 };

@@ -1,0 +1,22 @@
+{
+  "name": "microscope-website",
+  "version": "0.0.1",
+  "homepage": "https://github.com/bhtz/microscope-website",
+  "authors": [
+    "bhtz <benjamin.heintz@live.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.9.1",
+    "bootstrap": "~3.0.0",
+    "animate.css": "~2.1.0"
+  }
+}
