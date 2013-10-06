@@ -20,9 +20,16 @@
         app.get('/home', this.index);
         app.get('/home/index', this.index);
         app.get('/documentation', this.documentation);
-        app.get('/home/documentation', this.documentation);
+        app.get('/documentation/architecture', this.architecture);
+        app.get('/documentation/cli', this.cli);
+        app.get('/documentation/models', this.models);
+        app.get('/documentation/controllers', this.controllers);
+        app.get('/documentation/api', this.api);
+        app.get('/documentation/dal', this.dal);
+        app.get('/documentation/views', this.views);
+        app.get('/documentation/database', this.database);
+        app.get('/documentation/middleware', this.middleware);
         app.get('/tutorial', this.tutorial);
-        app.get('/home/tutorial', this.tutorial);
     };
 
     /**
@@ -45,6 +52,102 @@
         res.render('home/docs');
     };
 
+        /**
+     * [HttpGet].
+     * tutorial action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.architecture = function(req, res) {
+        res.render('home/architecture');
+    };
+
+        /**
+     * [HttpGet].
+     * tutorial action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.cli = function(req, res) {
+        res.render('home/cli');
+    };
+
+        /**
+     * [HttpGet].
+     * tutorial action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.models = function(req, res) {
+        res.render('home/models');
+    };
+
+        /**
+     * [HttpGet].
+     * tutorial action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.controllers = function(req, res) {
+        res.render('home/controllers');
+    };
+
+        /**
+     * [HttpGet].
+     * tutorial action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.api = function(req, res) {
+        res.render('home/api');
+    };
+
+        /**
+     * [HttpGet].
+     * tutorial action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.dal = function(req, res) {
+        res.render('home/dal');
+    };
+
+        /**
+     * [HttpGet].
+     * tutorial action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.views = function(req, res) {
+        res.render('home/views');
+    };
+
+        /**
+     * [HttpGet].
+     * tutorial action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.database = function(req, res) {
+        res.render('home/database');
+    };
+
+        /**
+     * [HttpGet].
+     * tutorial action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.middleware = function(req, res) {
+        res.render('home/middleware');
+    };
+
+    /**
+     * [HttpGet].
+     * tutorial action
+     * @param  {request} req
+     * @param  {response} res
+     */
     HomeController.prototype.tutorial = function(req, res) {
         res.render('home/tutorial');
     };

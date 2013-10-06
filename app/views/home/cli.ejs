@@ -1,0 +1,78 @@
+<div class="page-header animated slideInRight">
+  <h1 class="text-info">Documentation <small>how to use microscope.js</small></h1>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<ul class="list-group">
+			<a class="list-group-item" href="/documentation">Getting started</a>
+			<a class="list-group-item" href="/documentation/architecture">Project architecture</a>
+			<a class="list-group-item active" href="/documentation/cli">CLI</a>
+			<a class="list-group-item" href="/documentation/models">Models</a>
+			<a class="list-group-item" href="/documentation/controllers">Controllers</a>
+			<a class="list-group-item" href="/documentation/api">Api</a>
+			<a class="list-group-item" href="/documentation/dal">Data Access Layer</a>
+			<a class="list-group-item" href="/documentation/views">Views</a>
+			<a class="list-group-item" href="/documentation/database">Database</a>
+			<a class="list-group-item" href="/documentation/middleware">Middleware</a>
+		</ul>
+	</div>
+	<div class="col-md-9 animated bounceInUp">
+		<h2 class="text-primary">CLI</h2>
+			<h3 class="text-success">Command Line Interface</h3>
+				<p>
+					microscope provided a command line interface to quickly build web application. You can run server, generate some models or controllers and scaffold REST API, CRUD controller or Data Access Layer.
+				</p>
+				<p>Here is the CLI commands (arguments in "[]"): </p>
+
+				<h4 class="text-primary">display help</h4>
+				<pre>microscope help</pre>
+				<p>Display help for microscope commands</p>
+				<br>
+
+				<h4 class="text-primary">Displaying inquirer tool</h4>
+				<pre>microscope tool</pre>
+				<p>Display microscope inquirer tool describe bellow.</p>
+				<br>
+
+				<h4 class="text-primary">Create new project</h4>
+				<pre>microscope new [projectname]</pre>
+				<p>This command create a new microscope project in your current shell location. Argument is the name of your project.</p>
+				<br>
+
+				<h4 class="text-primary">Run application server</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>microscope server</pre>
+				<p>this command run the application server.</p>
+				<br>
+
+				<h4 class="text-primary">generate model file</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>microscope generate model [modelname] [property1:type] [property2:type] [property3:type] ...</pre>
+				<p>This command generate a model file with the name in first argument and properties in others arguments. Check <b>./app/models</b> folder !</p>
+				<p>Here is the available property type :</p>
+				<ul>
+					<li>string</li>
+					<li>text</li>
+					<li>boolean</li>
+					<li>date</li>
+					<li>integer</li>
+					<li>float</li>
+				</ul>
+				<br>
+
+				<h4 class="text-primary">generate controller file</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>microscope generate controller [controllername] [action1] [action2] ...</pre>
+				<p>this command generate a controller file and views file according to actions pass in arguments. It also create a stylus file in <b>./app/assets/styles/ folder</b></p>
+				<br>
+
+			<h3 class="text-success">Command Line Tool</h3>
+			<h3 class="text-success">Grunt tasks</h3>
+
+			<p>
+				<a class="btn btn-warning" href="/documentation/architecture">Project architecture</a>
+				<a class="btn btn-primary" href="/documentation/models">Models</a>
+			</p>
+	</div>
+</div>

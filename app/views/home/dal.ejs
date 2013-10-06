@@ -1,0 +1,43 @@
+<div class="page-header animated slideInRight">
+  <h1 class="text-info">Documentation <small>how to use microscope.js</small></h1>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<ul class="list-group">
+			<a class="list-group-item" href="/documentation">Getting started</a>
+			<a class="list-group-item" href="/documentation/architecture">Project architecture</a>
+			<a class="list-group-item" href="/documentation/cli">CLI</a>
+			<a class="list-group-item" href="/documentation/models">Models</a>
+			<a class="list-group-item" href="/documentation/controllers">Controllers</a>
+			<a class="list-group-item" href="/documentation/api">Api</a>
+			<a class="list-group-item active" href="/documentation/dal">Data Access Layer</a>
+			<a class="list-group-item" href="/documentation/views">Views</a>
+			<a class="list-group-item" href="/documentation/database">Database</a>
+			<a class="list-group-item" href="/documentation/middleware">Middleware</a>
+		</ul>
+	</div>
+	<div class="col-md-9 animated bounceInUp">
+		<h2 class="text-primary">Data Access Layer</h2>
+			<p>Data access layer class are here to increase the maintainability of your application's controllers and API by separating the data access functions. By this way, DbContext class should never be instantiate in microscope controllers. This is the role of DAL class.</p>
+			<p>
+				DAL class use DbContext class to get data from database.
+				here is a simple example how to retrieve data :
+			</p>
+			<pre>
+/**
+* Get all user.
+* @param {callback} - callback function. 
+*/
+UserDal.prototype.getAll = function (callback) {
+    dbContext.user.findAll({ order: 'id DESC' }).success(function (users) {
+        callback(users);
+    });
+};
+			</pre>
+			<p>
+				<a class="btn btn-warning" href="/documentation/api">API</a>
+				<a class="btn btn-primary" href="/documentation/views">Views</a>
+			</p>
+	</div>
+</div>

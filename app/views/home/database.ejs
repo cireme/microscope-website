@@ -1,0 +1,76 @@
+<div class="page-header animated slideInRight">
+  <h1 class="text-info">Documentation <small>how to use microscope.js</small></h1>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<ul class="list-group">
+			<a class="list-group-item" href="/documentation">Getting started</a>
+			<a class="list-group-item" href="/documentation/architecture">Project architecture</a>
+			<a class="list-group-item" href="/documentation/cli">CLI</a>
+			<a class="list-group-item" href="/documentation/models">Models</a>
+			<a class="list-group-item" href="/documentation/controllers">Controllers</a>
+			<a class="list-group-item" href="/documentation/api">Api</a>
+			<a class="list-group-item" href="/documentation/dal">Data Access Layer</a>
+			<a class="list-group-item" href="/documentation/views">Views</a>
+			<a class="list-group-item active" href="/documentation/database">Database</a>
+			<a class="list-group-item" href="/documentation/middleware">Middleware</a>
+		</ul>
+	</div>
+	<div class="col-md-9 animated bounceInUp">
+		<h2 class="text-primary">Database</h2>
+			<p>In database folder there are some class to manage database.</p>
+			<h3 class="text-success">DbConnection</h3>
+				<p>DbConnection is the database connection function. It is expose with require in dbContext class to connect with you database. It use the database.json configuration file.</p>
+			<h3 class="text-success">DbContext</h3>
+				<p>DbContext is the class that centralizes all models. You have to define your models in entities methods. If you don't do that, models will be not synchronize with database.</p>
+				<pre>
+/**
+ * Attach your model to DbContext to perform database sync.
+ */
+DbContext.prototype.entities = function() {
+    this.user = this.db.import(modelsPath + 'user');
+    this.movie = this.db.import(modelsPath + 'movie');
+    this.category = this.db.import(modelsPath + 'category');
+    this.comment = this.db.import(modelsPath + 'comment');
+};
+				</pre>
+
+				<p>You need to describe relation between models in modelBuilder method like the following example :</p>
+				<pre>
+/**
+* Manage Database entities associations here.
+*/
+DbContext.prototype.modelBuilder = function () {
+    this.category.hasMany(this.movie, {as : 'Movies'});
+    this.movie.belongsTo(this.category);
+    
+    this.movie.hasMany(this.comment, {as : 'Comments'});
+    this.comment.belongsTo(this.movie);
+
+    this.user.hasMany(this.comment, {as : 'Comments', foreignKey: 'authorId'});
+    this.user.hasMany(this.comment, {as : 'Appreciations', foreignKey: 'userId'});
+    this.comment.belongsTo(this.user);
+
+    this.user.hasMany(this.movie, {as: 'Movies', joinTableName: 'likes'});
+    this.movie.hasMany(this.user, {as: 'Likers', joinTableName: 'likes'});
+};
+				</pre>
+
+				<p>
+					Read the <a href="http://sequelizejs.com/documentation#associations-one-to-one">Sequelize documentation</a> to learn how to perform associations between models.
+				</p>
+			<h3 class="text-success">DbManager</h3>
+				<p>DbManager class is used by microscope CLI to run models synchronization, database drop and runnning fixtures. You don't have to use it in your application but don't delete it.</p>
+			<h3 class="text-success">DbFixtures</h3>
+				<p>DbFixtures is a function where you can describe seeds data. You can run fixtures with the following command :</p>
+				<pre>microscope db fixture</pre>
+				<p>Or with inquirer tool :</p>
+				<pre>microscope tool > database > run fixtures</pre>
+
+		<p>
+			<a class="btn btn-warning" href="/documentation/views">Views</a>
+			<a class="btn btn-primary" href="/documentation/middleware">Middleware</a>
+		</p>
+	</div>
+</div>

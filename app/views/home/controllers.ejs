@@ -1,0 +1,113 @@
+<div class="page-header animated slideInRight">
+  <h1 class="text-info">Documentation <small>how to use microscope.js</small></h1>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<ul class="list-group">
+			<a class="list-group-item" href="/documentation">Getting started</a>
+			<a class="list-group-item" href="/documentation/architecture">Project architecture</a>
+			<a class="list-group-item" href="/documentation/cli">CLI</a>
+			<a class="list-group-item" href="/documentation/models">Models</a>
+			<a class="list-group-item active" href="/documentation/controllers">Controllers</a>
+			<a class="list-group-item" href="/documentation/api">Api</a>
+			<a class="list-group-item" href="/documentation/dal">Data Access Layer</a>
+			<a class="list-group-item" href="/documentation/views">Views</a>
+			<a class="list-group-item" href="/documentation/database">Database</a>
+			<a class="list-group-item" href="/documentation/middleware">Middleware</a>
+		</ul>
+	</div>
+	<div class="col-md-9 animated bounceInUp">
+		<h2 class="text-primary">Controllers</h2>
+				<p>
+					microscope is a MVC design pattern framework. So you can find controller in <strong>./app/controllers/</strong> folder.
+					microscope controllers are prototype class with contructor, routes method and actions.
+					routes() method define the controller routing. So all your routes are define inside controller class.
+					routes catch http request and callback to controller actions.
+					Keep in mind microscope.js is based on express.js and controller are just express routes + function in prototype class. If you love express.js, write microscope controllers will be easy.
+					Check this out the basic controller syntax :
+				</p>
+				<pre>
+/**
+* homeController class
+*/
+(function () {
+
+    /**
+    * Constructor.
+    * @param {app} - express app.
+    */
+    function HomeController(app) {
+        this.routes(app);
+    }
+
+    /**
+     * Controller routes
+     * @param  {express} app
+     */
+    HomeController.prototype.routes = function(app) {
+        app.get('/', this.index);
+        app.get('/home', this.index);
+        app.get('/home/index', this.index);
+        app.get('/documentation', this.docs);
+    };
+
+    /**
+     * [HttpGet].
+     * index action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.index = function(req, res) {
+        res.render('home/index');
+    };
+
+    /**
+     * [HttpGet].
+     * docs action
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.docs = function(req, res) {
+        res.render('home/docs');
+    };
+
+    module.exports = HomeController;
+})();
+				</pre>
+			<h3 class="text-success">routes</h3>
+				<p>
+					All microscope controllers have a routes method. It is here that you have to define your controller routing. for example :
+				</p>
+				<pre>
+app.get('/home/index', this.index);
+app.get('/documentation', this.docs);
+    			</pre>
+    			<p>
+    				In this example, when HomeController catch a request with '/home/index' url, it callback to index action.
+    			</p>
+			<h3 class="text-success">actions</h3>
+				<p>Actions are controllers routes callback. You can render views with the following syntax (once again it's express based):</p>
+				<pre>res.render('/home/index');</pre>
+				<p>Or return json data with :</p>
+				<pre>res.send(data);</pre>
+				<p>Read the express documentation for actions rendering and parameters : <a href="http://expressjs.com/">http://expressjs.com/</a> </p>
+			<h3 class="text-success">filters</h3>
+				<p>You can apply filters before actions callback. For example for filters actions for authenticated users only you can write :</p>
+				<pre>
+/* In your modules dependencies */
+var MembershipFilters = require('../../middleware/membershipFilters');
+
+/* private attributes */
+var filters = new MembershipFilters();
+
+/* in routes method */
+app.post('/api/comments', filters.authorize, this.post);
+				</pre>
+
+			<p>
+				<a class="btn btn-warning" href="/documentation/models">Models</a>
+				<a class="btn btn-primary" href="/documentation/api">API</a>
+			</p>
+	</div>
+</div>

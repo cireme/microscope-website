@@ -4,30 +4,32 @@
 
 <div class="row">
 	<div class="col-md-3">
-		<ul class="list-group animated slideInLeft">
-			<li class="list-group-item"><a href="#getting-started">Getting started</a></li>
-			<li class="list-group-item">Project architecture</li>
-			<li class="list-group-item">CLI</li>
-			<li class="list-group-item">Models</li>
-			<li class="list-group-item">Controllers</li>
-			<li class="list-group-item">API</li>
-			<li class="list-group-item">Data Access Layer</li>
-			<li class="list-group-item">Views</li>
-			<li class="list-group-item">Database</li>
-			<li class="list-group-item">Middleware</li>
+		<ul class="list-group">
+			<a class="list-group-item active" href="/documentation">Getting started</a>
+			<a class="list-group-item" href="/documentation/architecture">Project architecture</a>
+			<a class="list-group-item" href="/documentation/cli">CLI</a>
+			<a class="list-group-item" href="/documentation/models">Models</a>
+			<a class="list-group-item" href="/documentation/controllers">Controllers</a>
+			<a class="list-group-item" href="/documentation/api">Api</a>
+			<a class="list-group-item" href="/documentation/dal">Data Access Layer</a>
+			<a class="list-group-item" href="/documentation/views">Views</a>
+			<a class="list-group-item" href="/documentation/database">Database</a>
+			<a class="list-group-item" href="/documentation/middleware">Middleware</a>
 		</ul>
 	</div>
+
 	<div class="col-md-9 animated bounceInUp">
 		<h2 class="text-primary" id="getting-started">Getting started</h2>
 			<h3 class="text-success">installation</h3>
+				<p>You can install microscope with node package manager</p>
 				<pre>npm install microscope -g</pre>
 
-			<h3 class="text-success">create new app</h3>
+			<h3 class="text-success">create new application</h3>
 				<p>you can use the CLI to generate new pre-builded project</p>
 				<pre>microscope new projectname</pre>
 				<p>or you can use the microscope inquirer tool with the following selection :</p>
 				<pre>microscope tool</pre>
-				<pre>microscope new project</pre>
+				<pre>> new project</pre>
 				<p>You now need to install microscope project dependencies</p>
 				<pre>cd projectname</pre>
 				<pre>npm install</pre>
@@ -38,144 +40,31 @@
 				<p>basic microscope project come with user model for authentication</p>
 				<p>you need to synchronize you model with your database</p>
 				<p>create new mysql database and edit <strong>./config/database.json</strong> config file</p>
+				<pre>
+{
+  "name": "mydatabasename",
+  "user": "root",
+  "password": "",
+  "host": "localhost",
+  "port": 3306,
+  "dialect": "mysql"
+}
+				</pre>
+				<p>Now run</p>
 				<pre>microscope db sync</pre>
 				<p>or with microscope inquirer tool</p>
 				<pre>microscope tool</pre>
 				<pre> > database</pre>
 				<pre> > synchronize</pre>
-				<p>congratulation !</p>
-				<p>you can now run your server</p>
+
+			<h3 class="text-success">run server</h3>
+				<p>congratulation ! You can now run your server</p>
 				<pre>microscope server</pre>
 				<p>or :</p>
 				<pre>microscope tool > run server</pre>
-				<p>Visit : <a href="http://localhost:3000">http://localhost:3000</a></p>
-
-		<h2 class="text-primary">Project architecture</h2>
-			<h3 class="text-success">app</h3>
-				<p>app folder is your application folder. You can find here your controllers, api, data access layer, models and views.</p>
-				Here is the app folder architecture :
-				<pre>
-app/
-|   api/
-|   assets/
-|   controllers/
-|   dal/
-|   models/
-|   views/
-				</pre>
-			<h3 class="text-success">controller</h3>
+				<p>Visit : <a class="btn btn-success" href="http://localhost:3000">http://localhost:3000</a></p>
 				<p>
-					microscope is a MVC design pattern framework. So you can find controller in <strong>./app/controllers/</strong> folder.
-					microscope controllers are prototype class with contructor, routes method and actions.
-					routes() method define the controller routing. So all your routes are define inside controller class.
-					routes catch http request and callback to controller actions.
-					Check this out the basic controller syntax :
+					<a class="btn btn-primary" href="/documentation/architecture">Project architecture</a>
 				</p>
-				<pre>
-/**
-* homeController class
-*/
-(function () {
-
-    /**
-    * Constructor.
-    * @param {app} - express app.
-    */
-    function HomeController(app) {
-        this.routes(app);
-    }
-
-    /**
-     * Controller routes
-     * @param  {express} app
-     */
-    HomeController.prototype.routes = function(app) {
-        app.get('/', this.index);
-        app.get('/home', this.index);
-        app.get('/home/index', this.index);
-        app.get('/documentation', this.docs);
-    };
-
-    /**
-     * [HttpGet].
-     * index action
-     * @param  {request} req
-     * @param  {response} res
-     */
-    HomeController.prototype.index = function(req, res) {
-        res.render('home/index');
-    };
-
-    /**
-     * [HttpGet].
-     * docs action
-     * @param  {request} req
-     * @param  {response} res
-     */
-    HomeController.prototype.docs = function(req, res) {
-        res.render('home/docs');
-    };
-
-    module.exports = HomeController;
-})();
-				</pre>
-				<p>Keep in mind microscope.js is based on express.js and controller are just express routes + function in prototype class. If you love express.js, you will love microscope.</p>
-			<h3 class="text-success">api</h3>
-				<p>api folder is the folder for apiControllers. ApiControllers return data as json and use data access layer class. A basic apiController action is define like the following code :</p>
-				<pre>
-/**
-* [httpget]
-* movieApiController index action.
-* @param {req} http request.
-* @param {res} http response.
-*/
-movieApiController.prototype.getAll = function(req, res) {
-    movieDAL.getAll(function (movies) {
-        res.send(movies);
-    });
-};
-					</pre>
-			<h3 class="text-success">models</h3>
-			<h3 class="text-success">views</h3>
-			<h3 class="text-success">dal</h3>
-			<h3 class="text-success">configs</h3>
-			<h3 class="text-success">db</h3>
-			<h3 class="text-success">middleware</h3>
-			<h3 class="text-success">public</h3>
-
-		<h2 class="text-primary">CLI</h2>
-			<h3 class="text-success">Command Line Interface</h3>
-			<h3 class="text-success">Command Line Tool</h3>
-
-		<h2 class="text-primary">Models</h2>
-			<h3 class="text-success">Sequelize</h3>
-			<h3 class="text-success">Datatypes</h3>
-
-		<h2 class="text-primary">Controllers</h2>
-			<h3 class="text-success">routes</h3>
-			<h3 class="text-success">actions</h3>
-			<h3 class="text-success">filters</h3>
-
-		<h2 class="text-primary">API</h2>
-			<h3 class="text-success">routes</h3>
-
-		<h2 class="text-primary">Data Access Layer</h2>
-
-		<h2 class="text-primary">Views</h2>
-			<h3 class="text-success">EJS</h3>
-			<h3 class="text-success">helpers</h3>
-
-		<h2 class="text-primary">Database</h2>
-			<h3 class="text-success">DbConnection</h3>
-			<h3 class="text-success">DbContext</h3>
-			<h3 class="text-success">DbManager</h3>
-			<h3 class="text-success">DbFixtures</h3>
-
-		<h2 class="text-primary">Middleware</h2>
-			<h3 class="text-success">errors</h3>
-			<h3 class="text-success">device handler</h3>
-			<h3 class="text-success">membership</h3>
-			<h3 class="text-success">filters</h3>
-
 	</div>
 </div>

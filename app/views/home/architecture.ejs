@@ -1,0 +1,66 @@
+<div class="page-header animated slideInRight">
+  <h1 class="text-info">Documentation <small>how to use microscope.js</small></h1>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<ul class="list-group">
+			<a class="list-group-item" href="/documentation">Getting started</a>
+			<a class="list-group-item active" href="/documentation/architecture">Project architecture</a>
+			<a class="list-group-item" href="/documentation/cli">CLI</a>
+			<a class="list-group-item" href="/documentation/models">Models</a>
+			<a class="list-group-item" href="/documentation/controllers">Controllers</a>
+			<a class="list-group-item" href="/documentation/api">Api</a>
+			<a class="list-group-item" href="/documentation/dal">Data Access Layer</a>
+			<a class="list-group-item" href="/documentation/views">Views</a>
+			<a class="list-group-item" href="/documentation/database">Database</a>
+			<a class="list-group-item" href="/documentation/middleware">Middleware</a>
+		</ul>
+	</div>
+	<div class="col-md-9 animated bounceInUp">
+		<h2 class="text-primary">Project architecture</h2>
+			<h3 class="text-success">app</h3>
+				<p>App folder is your application folder. You can find here your controllers, api, data access layer, models and views.</p>
+				Here is the app folder architecture :
+				<pre>
+app/
+|   api/
+|   assets/
+|   controllers/
+|   dal/
+|   models/
+|   views/
+				</pre>
+			<h3 class="text-success">controller</h3>
+				<p>Here is the place for your application controllers.</p>			
+			<h3 class="text-success">api</h3>
+				<p>Api folder is the folder for microscope apiControllers. ApiControllers return json data and use data access layer class.
+			<h3 class="text-success">models</h3>
+				<p>Here is the place for application models</p>
+			<h3 class="text-success">views</h3>
+				<p>
+					This is the folder for your application views. 
+					By convention, there is one sub-folder by controller
+				</p>
+			<h3 class="text-success">dal</h3>
+				<p>The data access layer class folder.</p>
+			<h3 class="text-success">configs</h3>
+				<p>Put your configuration json files here.</p>
+			<h3 class="text-success">db</h3>
+				<p>This a the folder where class in relation with database are defined.</p>
+			<h3 class="text-success">middleware</h3>
+				<p>By microscope convention, all express middleware have to be defined here.</p>
+			<h3 class="text-success">public</h3>
+				<p>All public files are exposed here. Default architecture :</p>
+				<pre>
+/public
+|   /images
+|   /scripts
+|   /styles
+				</pre>
+				<p>
+					<a class="btn btn-warning" href="/documentation">Getting started</a>
+					<a class="btn btn-primary" href="/documentation/cli">CLI</a>
+				</p>
+	</div>
+</div>

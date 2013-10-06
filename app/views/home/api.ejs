@@ -1,0 +1,52 @@
+<div class="page-header animated slideInRight">
+  <h1 class="text-info">Documentation <small>how to use microscope.js</small></h1>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<ul class="list-group">
+			<a class="list-group-item" href="/documentation">Getting started</a>
+			<a class="list-group-item" href="/documentation/architecture">Project architecture</a>
+			<a class="list-group-item" href="/documentation/cli">CLI</a>
+			<a class="list-group-item" href="/documentation/models">Models</a>
+			<a class="list-group-item" href="/documentation/controllers">Controllers</a>
+			<a class="list-group-item active" href="/documentation/api">Api</a>
+			<a class="list-group-item" href="/documentation/dal">Data Access Layer</a>
+			<a class="list-group-item" href="/documentation/views">Views</a>
+			<a class="list-group-item" href="/documentation/database">Database</a>
+			<a class="list-group-item" href="/documentation/middleware">Middleware</a>
+		</ul>
+	</div>
+	<div class="col-md-9 animated bounceInUp">
+		<h2 class="text-primary">API</h2>
+			<p>ApiController are like controllers but send json and no html. By convention, base url for apiController is '/api/'</p>
+			<p>Like in controllers, apiControllers have routes methods where you have to define your endpoints, and can have filters.</p>
+			<p>Here is a basic apiController action :</p>
+			<pre>
+/**
+* [httpget]
+* movieApiController index action.
+* @param {req} http request.
+* @param {res} http response.
+*/
+movieApiController.prototype.getAll = function(req, res) {
+    movieDAL.getAll(function (movies) {
+        res.send(movies);
+    });
+};
+			</pre>
+			<p>Because microscope use the express module <a href="https://npmjs.org/package/cors">cors</a>. If you want to enable cross domain API you have to include the following code to your app.js file :</p>
+			<pre>
+var cors = require('cors');
+app.use(cors({
+		credentials : true,
+		origin : true
+	})
+);
+			</pre>
+			<p>
+				<a class="btn btn-warning" href="/documentation/controllers">Controllers</a>
+				<a class="btn btn-primary" href="/documentation/dal">Data access layer</a>
+			</p>
+	</div>
+</div>

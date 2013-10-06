@@ -1,0 +1,80 @@
+<div class="page-header animated slideInRight">
+  <h1 class="text-info">Documentation <small>how to use microscope.js</small></h1>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<ul class="list-group">
+			<a class="list-group-item" href="/documentation">Getting started</a>
+			<a class="list-group-item" href="/documentation/architecture">Project architecture</a>
+			<a class="list-group-item" href="/documentation/cli">CLI</a>
+			<a class="list-group-item active" href="/documentation/models">Models</a>
+			<a class="list-group-item" href="/documentation/controllers">Controllers</a>
+			<a class="list-group-item" href="/documentation/api">Api</a>
+			<a class="list-group-item" href="/documentation/dal">Data Access Layer</a>
+			<a class="list-group-item" href="/documentation/views">Views</a>
+			<a class="list-group-item" href="/documentation/database">Database</a>
+			<a class="list-group-item" href="/documentation/middleware">Middleware</a>
+		</ul>
+	</div>
+	<div class="col-md-9 animated bounceInUp">
+		<h2 class="text-primary">Models</h2>
+			<h3 class="text-success">Sequelize</h3>
+			<p>
+				microscope come with sequelize ORM.
+				microscope models are sequelize models. You can define your models like describe in <a href="http://sequelizejs.com/documentation#models-definition">Sequelize documentation</a>
+				Here is a basic user model :
+			</p>
+			<pre>
+module.exports = function (db, DataTypes) {
+
+	var User = db.define('user', {
+		username: DataTypes.STRING,
+		firstname: DataTypes.STRING,
+		lastname: DataTypes.STRING,
+		email: DataTypes.STRING,
+		password: DataTypes.STRING,
+		city: DataTypes.STRING,
+		birthday: DataTypes.DATE,
+		gender: DataTypes.ENUM('male', 'female')
+	}, {
+		timestamps: false
+	});
+
+	return User;
+}
+			</pre>
+			<h3 class="text-success">Datatypes</h3>
+			<p>According to Sequelize documentation, here is available datatype :</p>
+				<pre>
+DataTypes.STRING                      // VARCHAR(255)
+DataTypes.STRING(1234)                // VARCHAR(1234)
+DataTypes.STRING.BINARY               // VARCHAR BINARY
+DataTypes.TEXT                        // TEXT
+
+DataTypes.INTEGER                     // INTEGER
+DataTypes.BIGINT                      // BIGINT
+DataTypes.BIGINT(11)                  // BIGINT(11)
+DataTypes.FLOAT                       // FLOAT
+DataTypes.FLOAT(11)                   // FLOAT(11)
+DataTypes.FLOAT(11, 12)               // FLOAT(11,12) 
+
+DataTypes.DECIMAL                     // DECIMAL
+DataTypes.DECIMAL(10, 2)              // DECIMAL(10,2)
+
+DataTypes.DATE                        // DATETIME for mysql/sqlite, TIMESTAMP WITH TIME ZONE for postgres
+DataTypes.BOOLEAN                     // TINYINT(1)
+
+DataTypes.ENUM('value 1', 'value 2')  // An ENUM with allowed values 'value 1' and 'value 2'
+DataTypes.ARRAY(Sequelize.TEXT)       // Defines an array. PostgreSQL only.
+
+DataTypes.BLOB                        // BLOB (bytea for PostgreSQL)
+DataTypes.BLOB('tiny')                // TINYBLOB (bytea for PostgreSQL. Other options are medium and long)
+				</pre>
+
+			<p>
+				<a class="btn btn-warning" href="/documentation/cli">CLI</a>
+				<a class="btn btn-primary" href="/documentation/controllers">Controllers</a>
+			</p>
+	</div>
+</div>
