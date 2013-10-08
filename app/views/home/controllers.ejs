@@ -84,11 +84,13 @@ app.get('/home/index', this.index);
 app.get('/documentation', this.docs);
     			</pre>
     			<p>
-    				In this example, when HomeController catch a request with '/home/index' url, it callback to index action.
+    				In this example, when HomeController catch a request with '/home/index' url, it callback processing to index action.
     			</p>
 			<h3 class="text-success">actions</h3>
 				<p>Actions are controllers routes callback. You can render views with the following syntax (once again it's express based):</p>
 				<pre>res.render('/home/index');</pre>
+				<p>with data</p>
+				<pre>res.render('/home/index', {'title' : mytitleobject});</pre>
 				<p>Or return json data with :</p>
 				<pre>res.send(data);</pre>
 				<p>Read the express documentation for actions rendering and parameters : <a href="http://expressjs.com/">http://expressjs.com/</a> </p>

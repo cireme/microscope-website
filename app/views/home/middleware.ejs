@@ -20,9 +20,22 @@
 	<div class="col-md-9 animated bounceInUp">
 		<h2 class="text-primary">Middleware</h2>
 			<h3 class="text-success">errors</h3>
+				<p>
+					Errors middleware loosely based off of the connect/errorHandler code and handle the errors of the application. It return 404 or 500 page error.
+				</p>
 			<h3 class="text-success">device handler</h3>
+				<p>
+					DeviceHandler middleware detect request user agent and return mobile page if exist and if user agent match a mobile device. microscope application have a default layout_mobile.ejs file at the root of views folder. It is a jQuery mobile page.
+				</p>
 			<h3 class="text-success">membership</h3>
-			<h3 class="text-success">filters</h3>
+				<p>
+					microscope use passport.js authentication tool. membership is a configuration file for passport.js. It is use to serialize and deserialize user and define function to retrieve user in database.
+					You can use different strategy according to <a href="http://passportjs.org/">passport.js</a> documentation like facebook or twitter authentication.
+				</p>
+			<h3 class="text-success">membershipFilters</h3>
+				<p>
+					microscope provide one basic membershipfilter class. It is used to filter actions for authenticated users only. You can easily extend this class by adding your own methods.
+				</p>
 			
 			<p>
 				<a class="btn btn-warning" href="/documentation/database">Database</a>

@@ -67,8 +67,54 @@
 				<p>this command generate a controller file and views file according to actions pass in arguments. It also create a stylus file in <b>./app/assets/styles/ folder</b></p>
 				<br>
 
+				<h4 class="text-primary">scaffold crud controller</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>microscope scaffold controller [modelname] [property1:type] [property2:type] ...</pre>
+				<p>this command generate a <b>crud controller</b> with <b>crud views</b> and a <b>model</b> files according to the model passed in arguments. It also create a <b>stylus</b> file in <b>./app/assets/styles/</b> folder and a <b>data access layer</b> class.</p><p>This command is very useful for prototyping an application.</p>
+				<br>
+
+				<h4 class="text-primary">scaffold web api</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>microscope scaffold api [modelname] [property1:type] [property2:type] ...</pre>
+				<p>this command generate a web api , a model and a data access layer class according to the model passing in arguments.</p>
+				<br>
+
+				<h4 class="text-primary">scaffold data access layer</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>microscope scaffold dal [modelname] [property1:type] [property2:type] ...</pre>
+				<p>this command generate a data access layer class with crud methods and a model file according to the model passing in arguments.</p>
+				<br>
+
+				<h4 class="text-primary">database synchronization</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>microscope db sync</pre>
+				<p>this command generate SQL request according to your dbContext entities to synchronize database tables with your models. You have to edit database.json configuration file before executing this command.</p>
+				<br>
+
+				<h4 class="text-primary">database drop</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>microscope db drop</pre>
+				<p>this command generate SQL request according to your dbContext entities to drop database tables. You have to edit database.json configuration file before executing this command.</p>
+				<br>
+
+				<h4 class="text-primary">run fixtures</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>microscope db fixture</pre>
+				<p>this command run functions defined in file dbFixtures.js. Use it to load seeds data.</p>
+				<br>
+
 			<h3 class="text-success">Command Line Tool</h3>
+				<h4 class="text-primary">Display microscope inquirer tool</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>microscope tool</pre>
+				<p>this command display microscope inquirer tool. It is a shell application with a list of commands that you can run. Select one option and answer to the questions (*)! Pretty easy !</p>
+				<p>* Syntaxes for describing models and controllers are the same as in the command line interface.</p>
+				<br>
+
 			<h3 class="text-success">Grunt tasks</h3>
+				<p>
+					Grunt.js is currently in implementation in microscope. Grunt tasks documentation come soon.
+				</p>
 
 			<p>
 				<a class="btn btn-warning" href="/documentation/architecture">Project architecture</a>
