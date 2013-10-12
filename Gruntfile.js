@@ -17,8 +17,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
 	// Default task(s).
-	grunt.registerTask('default', []);
+	grunt.registerTask('default', ['build']);
 
 	grunt.registerTask('build', ['clean', 'copy:dev', 'stylus:dev']);
-	grunt.registerTask('build:release', []);
+	grunt.registerTask('build:release', ['clean', 'copy:release', 'stylus:release']);
 };

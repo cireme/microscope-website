@@ -70,6 +70,7 @@
 				<h4 class="text-primary">scaffold crud controller</h4>
 				<p class="text-danger">You have to run this command at the project root</p>
 				<pre>microscope scaffold controller [modelname] [property1:type] [property2:type] ...</pre>
+				<p class="text-success">Add option : <b>--mobile</b> or <b>-m</b> for adding mobile views.</p>
 				<p>this command generate a <b>crud controller</b> with <b>crud views</b> and a <b>model</b> files according to the model passed in arguments. It also create a <b>stylus</b> file in <b>./app/assets/styles/</b> folder and a <b>data access layer</b> class.</p><p>This command is very useful for prototyping an application.</p>
 				<br>
 
@@ -112,9 +113,23 @@
 				<br>
 
 			<h3 class="text-success">Grunt tasks</h3>
+				<h4 class="text-primary">build assets for development</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>grunt build</pre>
+				<p>This command build your public folder from your assets, bower components and stylus styles. Stylus files are compiled in application.css</p>
 				<p>
-					Grunt.js is currently in implementation in microscope. Grunt tasks documentation come soon.
+					Update ./grunt_tasks/copy.js grunt task for copying dependencies in your public folder like bootstrap.js, bootstrap.css or jquery.js. Put JavaScript external librairies in ./public/vendors folder.
 				</p>
+				<br>
+
+				<h4 class="text-primary">build assets for release</h4>
+				<p class="text-danger">You have to run this command at the project root</p>
+				<pre>grunt build:release</pre>
+				<p>This command build your public folder from your assets, bower components and stylus styles in release mode.</p>
+				<p>
+					In release mode, take only minified files. Stylus task generate minify css in release mode.
+				</p>
+				<br>
 
 			<p>
 				<a class="btn btn-warning" href="/documentation/architecture">Project architecture</a>
