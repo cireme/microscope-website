@@ -1,0 +1,75 @@
+<div class="page-header animated slideInRight">
+  <h1 class="text-info">Documentation <small>how to use microscope.js</small></h1>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<%- partial('menu') %>
+	</div>
+	<div class="col-md-9 animated bounceInUp">
+		<h2 class="text-primary">Logging</h2>
+		<h3 class="text-success">log4js</h3>
+		<p>
+			microscope includes by default the log4js logging library. 
+			It's based on the log4j library, well known in Java. You can find the full documentation <a href="http://log4js.berlios.de/">here</a> or directly on <a href="http://log4js.sourceforge.net/">source forge</a>.
+		</p>
+
+		<h3 class="text-success">configuration</h3>
+		<h4>inside microscope</h4>
+		<p>
+			If you generate a microscope project, logging is already enabled. You can first find the configuration file at /configs/logger.js
+		</p>
+		<pre>
+var log4js = require('../node_modules/log4js');
+
+log4js.configure({
+	appenders: [
+		{ type: 'console' },
+		{ 
+			type 	 	: 'file', 
+			filename 	: "logs/microscopejs.log"
+		}
+	]
+});
+
+var logger  = log4js.getLogger('Microscopejs');
+
+logger.setLevel('DEBUG');
+
+Object.defineProperty(
+	exports, 
+	"LOG", 
+	{value:logger}
+);
+		</pre>
+
+		<p>
+			You can see that two appenders are configured, the console one and the file appender. The second one is outputting in the file /logs/microscopejs.log
+		</p>
+
+		<h3 class="text-success">examples</h3>
+		<p>To start logging you have to include log4js using require like this : </p>
+		<pre>
+var logger      = require('../../configs/logger.js');
+		</pre>
+
+		<p>
+			And then you can log at different levels :
+		</p>
+		<pre>
+logger.LOG.error("Logging example - This is an error log");
+
+logger.LOG.warning("Logging example - This is a warning log");
+
+logger.LOG.debug("Logging example - This is a debug log");
+
+logger.LOG.info("Logging example - This is an info log");
+
+logger.LOG.trace("Logging example - This is a trace log");
+		</pre>
+
+		<p>
+			<a class="btn btn-warning" href="/documentation/middleware">Middleware</a>
+		</p>
+	</div>
+</div>
