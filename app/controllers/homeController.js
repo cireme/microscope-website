@@ -29,6 +29,7 @@
         app.get('/documentation/views', this.views);
         app.get('/documentation/database', this.database);
         app.get('/documentation/middleware', this.middleware);
+        app.get('/documentation/logging', this.logging);
         app.get('/tutorial', this.tutorial);
     };
 
@@ -140,6 +141,16 @@
      */
     HomeController.prototype.middleware = function(req, res) {
         res.render('home/middleware');
+    };
+
+        /**
+     * [HttpGet].
+     * tutorial action to show logging page
+     * @param  {request} req
+     * @param  {response} res
+     */
+    HomeController.prototype.logging = function(req, res) {
+        res.render('home/logging');
     };
 
     /**
