@@ -1,13 +1,35 @@
 <ul class="list-group">
-	<a class="list-group-item active" href="/documentation">Getting started</a>
-	<a class="list-group-item" href="/documentation/architecture">Project architecture</a>
-	<a class="list-group-item" href="/documentation/cli">CLI</a>
-	<a class="list-group-item" href="/documentation/models">Models</a>
-	<a class="list-group-item" href="/documentation/controllers">Controllers</a>
-	<a class="list-group-item" href="/documentation/api">Api</a>
-	<a class="list-group-item" href="/documentation/dal">Data Access Layer</a>
-	<a class="list-group-item" href="/documentation/views">Views</a>
-	<a class="list-group-item" href="/documentation/database">Database</a>
-	<a class="list-group-item" href="/documentation/middleware">Middleware</a>
-	<a class="list-group-item" href="/documentation/logging">Logging</a>
+	<a class="list-group-item <% if(req.params.active=="documentation"){ %> active <% } %>" href="/documentation">
+		Getting started
+	</a>
+	<a class="list-group-item <% if(req.params.active=="architecture"){ %> active <% } %>" href="/documentation/architecture">
+		Project architecture
+	</a>
+	<a class="list-group-item <% if(req.params.active=="cli"){ %> active <% } %>" href="/documentation/cli">
+		CLI
+	</a>
+	<a class="list-group-item <% if(req.params.active=="models"){ %> active <% } %>" href="/documentation/models">
+		Models
+	</a>
+	<a class="list-group-item <% if(req.params.active=="controllers"){ %> active <% } %>" href="/documentation/controllers">
+		Controllers
+	</a>
+	<a class="list-group-item <% if(req.params.active=="api"){ %> active <% } %>" href="/documentation/api">
+		Api
+	</a>
+	<a class="list-group-item <% if(req.params.active=="dal"){ %> active <% } %>" href="/documentation/dal">
+		Data Access Layer
+	</a>
+	<a class="list-group-item <% if(req.params.active=="views"){ %> active <% } %>" href="/documentation/views">
+		Views
+	</a>
+	<a class="list-group-item <% if(req.params.active=="database"){ %> active <% } %>" href="/documentation/database">
+		Database
+	</a>
+	<a class="list-group-item <% if(req.params.active=="middleware"){ %> active <% } %>" href="/documentation/middleware">
+		Middleware
+	</a>
+	<a class="list-group-item <% if(req.params.active=="logging"){ %> active <% } %>" href="/documentation/logging">
+		Logging
+	</a>
 </ul>

@@ -50,6 +50,8 @@
      * @param  {response} res
      */
     HomeController.prototype.documentation = function(req, res) {
+        req.params = [];
+        req.params.active = "documentation";
         res.render('home/docs');
     };
 
@@ -60,6 +62,8 @@
      * @param  {response} res
      */
     HomeController.prototype.architecture = function(req, res) {
+        req.params = [];
+        req.params.active = "architecture";
         res.render('home/architecture');
     };
 
@@ -70,6 +74,8 @@
      * @param  {response} res
      */
     HomeController.prototype.cli = function(req, res) {
+        req.params = [];
+        req.params.active = "cli";
         res.render('home/cli');
     };
 
@@ -80,6 +86,8 @@
      * @param  {response} res
      */
     HomeController.prototype.models = function(req, res) {
+        req.params = [];
+        req.params.active = "models";
         res.render('home/models');
     };
 
@@ -90,6 +98,8 @@
      * @param  {response} res
      */
     HomeController.prototype.controllers = function(req, res) {
+        req.params = [];
+        req.params.active = "controllers";
         res.render('home/controllers');
     };
 
@@ -100,6 +110,8 @@
      * @param  {response} res
      */
     HomeController.prototype.api = function(req, res) {
+        req.params = [];
+        req.params.active = "api";
         res.render('home/api');
     };
 
@@ -110,6 +122,8 @@
      * @param  {response} res
      */
     HomeController.prototype.dal = function(req, res) {
+        req.params = [];
+        req.params.active = "dal";
         res.render('home/dal');
     };
 
@@ -120,6 +134,8 @@
      * @param  {response} res
      */
     HomeController.prototype.views = function(req, res) {
+        req.params = [];
+        req.params.active = "views";
         res.render('home/views');
     };
 
@@ -130,6 +146,8 @@
      * @param  {response} res
      */
     HomeController.prototype.database = function(req, res) {
+        req.params = [];
+        req.params.active = "database";
         res.render('home/database');
     };
 
@@ -140,6 +158,8 @@
      * @param  {response} res
      */
     HomeController.prototype.middleware = function(req, res) {
+        req.params = [];
+        req.params.active = "middleware";
         res.render('home/middleware');
     };
 
@@ -150,6 +170,8 @@
      * @param  {response} res
      */
     HomeController.prototype.logging = function(req, res) {
+        req.params = [];
+        req.params.active = "logging";
         res.render('home/logging');
     };
 
